@@ -15,7 +15,7 @@ export const Navbar = () => {
         <header className={`header ${scrolled ? 'glass scrolled' : ''}`}>
             <div className="container nav">
                 <div className="logo">
-                    Student.Name
+                    Rishikanth.M
                 </div>
                 <nav className="nav-links">
                     <a href="#about" className="nav-link">About</a>

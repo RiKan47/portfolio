@@ -20,7 +20,9 @@ export const Hero = () => {
                     <span style={{ color: 'var(--current-primary)' }}>structured</span> systems.
                 </h1>
                 <h2 style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)', color: 'var(--current-text-muted)', fontWeight: 400, maxWidth: '650px', lineHeight: 1.6 }}>
-                    I'm a Computer Science student who writes code that works, looks good, and doesn't break when you look at it funny. Currently looking for internships.
+                    MS in Computer Science at UMass Amherst. Previously built core systems at Samsung R&D. I write scalable code that works.
+                    <br /><br />
+                    <span style={{ fontSize: '0.95rem', color: 'var(--current-text)' }}>✨ Try typing <code style={{ fontFamily: 'var(--font-mono)', padding: '0.2rem 0.4rem', background: 'rgba(255,255,255,0.1)', borderRadius: '4px' }}>sudo</code> right now to unlock my developer mode!</span>
                 </h2>
 
                 {isDevMode && (

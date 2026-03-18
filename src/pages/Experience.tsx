@@ -6,19 +6,9 @@ export const Experience = () => {
 
     const experiences = [
         {
-            title: "Senior Software Engineer",
+            title: "Senior Software Engineer & Software Engineer",
             company: "Samsung R&D Institute Bangalore",
-            date: "03/2024 - 01/2025",
-            points: [
-                "Optimized MAC Uplink capacity for Cell on Wheels deployments in Telus and Verizon modems, increasing overall cell capacity and LTE throughput by 25%.",
-                "Profiled and optimized core C++ system modules in a Linux environment to resolve CPU performance bottlenecks, reducing cycle consumption and improving throughput by 15%.",
-                "Built automated CI/CD pipelines using Python and PowerShell, significantly reducing manual testing time and accelerating software delivery."
-            ]
-        },
-        {
-            title: "Software Engineer",
-            company: "Samsung R&D Institute Bangalore",
-            date: "06/2022 - 03/2024",
+            date: "06/2022 - 01/2025",
             points: [
                 "Optimized MAC Uplink capacity for Cell on Wheels deployments in Telus and Verizon modems, increasing overall cell capacity and LTE throughput by 25%.",
                 "Profiled and optimized core C++ system modules in a Linux environment to resolve CPU performance bottlenecks, reducing cycle consumption and improving throughput by 15%.",

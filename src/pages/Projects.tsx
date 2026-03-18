@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTheme } from '../components/ThemeContext';
-import { Github, ExternalLink, LineChart, Database, BrainCircuit } from 'lucide-react';
+import { LineChart, Database, BrainCircuit } from 'lucide-react';
 
 export const Projects = () => {
     const { isDevMode } = useTheme();
@@ -10,23 +10,18 @@ export const Projects = () => {
             name: "Stock Market Application",
             description: "Built a fault-tolerant microservices trading platform on AWS using REST APIs; implemented LRU caching with server-push invalidations and leader-based replication for automatic failover. Implemented the Paxos consensus algorithm.",
             tech: ["React", "Python", "AWS", "REST APIs"],
-            github: "#",
-            live: "#",
             icon: <LineChart size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
         },
         {
             name: "Database Implementation",
             description: "Built a custom relational database management system (DBMS) from scratch in Java. Implemented core storage components including a buffer pool manager, on-disk page management, and a heap file storage engine.",
             tech: ["Java", "B+ Tree", "BNL Joins", "DBMS"],
-            github: "#",
-            live: "#",
             icon: <Database size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
         },
         {
             name: "Machine Learning Algorithms",
             description: "Implemented fundamental machine learning models from scratch in Python, including k-Nearest Neighbors, Decision Trees, Multinomial Naive Bayes, and Neural Networks without external libraries.",
             tech: ["Python", "Machine Learning", "Neural Networks"],
-            github: "#",
             icon: <BrainCircuit size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
         }
     ];
@@ -61,21 +56,9 @@ export const Projects = () => {
             >
                 {projects.map((proj, idx) => (
                     <motion.div key={idx} variants={itemVariants} className="glass" style={{ padding: '2rem', borderRadius: '16px', display: 'flex', flexDirection: 'column' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
                             <div style={{ marginRight: '1rem', flexShrink: 0 }}>
                                 {proj.icon}
-                            </div>
-                            <div style={{ display: 'flex', gap: '1rem' }}>
-                                {proj.github && (
-                                    <a href={proj.github} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--current-text-muted)' }}>
-                                        <Github size={20} className="hover-color-text" />
-                                    </a>
-                                )}
-                                {proj.live && (
-                                    <a href={proj.live} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--current-text-muted)' }}>
-                                        <ExternalLink size={20} className="hover-color-text" />
-                                    </a>
-                                )}
                             </div>
                         </div>
 
