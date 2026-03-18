@@ -7,20 +7,20 @@ export const Projects = () => {
 
     const projects = [
         {
-            name: "Stock Market Application",
-            description: "Built a fault-tolerant microservices trading platform on AWS using REST APIs; implemented LRU caching with server-push invalidations and leader-based replication for automatic failover. Implemented the Paxos consensus algorithm.",
+            name: "Distributed Trading Platform",
+            description: "AWS-hosted microservices trading engine. Implemented Paxos consensus for totally ordered writes across replicas, alongside an LRU caching layer with server-push invalidations to handle automatic leader failover.",
             tech: ["React", "Python", "AWS", "REST APIs"],
             icon: <LineChart size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
         },
         {
-            name: "Database Implementation",
-            description: "Built a custom relational database management system (DBMS) from scratch in Java. Implemented core storage components including a buffer pool manager, on-disk page management, and a heap file storage engine.",
+            name: "Relational DBMS",
+            description: "Custom relational database built from scratch. Features an on-disk page manager, a robust Buffer Pool Manager, and customized B+ Tree indexing to optimize Block Nested Loop (BNL) join execution.",
             tech: ["Java", "B+ Tree", "BNL Joins", "DBMS"],
             icon: <Database size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
         },
         {
-            name: "Machine Learning Algorithms",
-            description: "Implemented fundamental machine learning models from scratch in Python, including k-Nearest Neighbors, Decision Trees, Multinomial Naive Bayes, and Neural Networks without external libraries.",
+            name: "ML Algorithm Suite",
+            description: "Zero-dependency machine learning models implemented in pure Python. Includes custom training pipelines for k-Nearest Neighbors, Multinomial Naive Bayes, Decision Trees, and multi-layer Neural Networks.",
             tech: ["Python", "Machine Learning", "Neural Networks"],
             icon: <BrainCircuit size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
         }
@@ -44,7 +44,7 @@ export const Projects = () => {
     return (
         <section id="projects" className="section container">
             <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', fontWeight: 700, letterSpacing: '-0.02em', textAlign: 'center' }}>
-                {isDevMode ? 'projects.map((p) => <Card {...p} />)' : 'Featured Work'}
+                {isDevMode ? 'projects.map((p) => <Card {...p} />)' : 'Featured Projects'}
             </h2>
 
             <motion.div
@@ -70,9 +70,9 @@ export const Projects = () => {
 
                         {isDevMode && (
                             <div style={{ padding: '1rem', background: 'rgba(0,0,0,0.2)', borderRadius: '8px', marginBottom: '1.5rem', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#ff7b72' }}>
-                                System Status: <span style={{ color: '#79c0ff' }}>Operational</span>
+                                Deployment Status: <span style={{ color: '#ffcc00' }}>Local Development</span>
                                 <br />
-                                Dependencies: <span style={{ color: '#79c0ff' }}>Up to date</span>
+                                Next Action: <span style={{ color: '#79c0ff' }}>Awaiting Production Push</span>
                             </div>
                         )}
 

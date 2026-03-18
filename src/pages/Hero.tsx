@@ -15,9 +15,9 @@ export const Hero = () => {
                 <div style={{ marginBottom: '1rem', color: 'var(--current-accent)', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
                     {isDevMode ? '> console.log("Hello, World!");' : 'Hello, World!'}
                 </div>
-                <h1 style={{ fontSize: 'clamp(3rem, 8vw, 5.5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.03em' }}>
-                    I build <br />
-                    <span style={{ color: 'var(--current-primary)' }}>structured</span> systems.
+                <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.03em' }}>
+                    Building robust <br />
+                    <span style={{ color: 'var(--current-primary)' }}>backend systems</span> & scalable infrastructure.
                 </h1>
                 <h2 style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)', color: 'var(--current-text-muted)', fontWeight: 400, maxWidth: '650px', lineHeight: 1.6 }}>
                     MS in Computer Science at UMass Amherst. Previously built core systems at Samsung R&D. I write scalable code that works.

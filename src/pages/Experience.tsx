@@ -6,14 +6,12 @@ export const Experience = () => {
 
     const experiences = [
         {
-            title: "Senior Software Engineer & Software Engineer",
             company: "Samsung R&D Institute Bangalore",
-            date: "06/2022 - 01/2025",
-            points: [
-                "Optimized MAC Uplink capacity for Cell on Wheels deployments in Telus and Verizon modems, increasing overall cell capacity and LTE throughput by 25%.",
-                "Profiled and optimized core C++ system modules in a Linux environment to resolve CPU performance bottlenecks, reducing cycle consumption and improving throughput by 15%.",
-                "Built automated CI/CD pipelines using Python and PowerShell, significantly reducing manual testing time and accelerating software delivery."
-            ]
+            roles: [
+                { title: "Senior Software Engineer", date: "03/2024 - 01/2025" },
+                { title: "Software Engineer", date: "06/2022 - 03/2024" }
+            ],
+            highlight: "During my 2.5 years at Samsung, I engineered critical core network optimizations for Telus and Verizon 5G/LTE modems. Beyond deep C++ profiling to eliminate CPU bottlenecks and scale throughput, I architected robust automated CI/CD pipelines from scratch, completely transforming our team's integration speeds and software delivery lifecycle."
         }
     ];
 
@@ -38,15 +36,18 @@ export const Experience = () => {
                             whileHover={{ y: -5 }}
                             transition={{ duration: 0.2 }}
                         >
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', marginBottom: '1rem' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: 600 }}>{exp.title} <span style={{ color: 'var(--current-primary)' }}>@ {exp.company}</span></h3>
-                                <span style={{ color: 'var(--current-text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}>{exp.date}</span>
-                            </div>
-                            <ul style={{ paddingLeft: '1.2rem', color: 'var(--current-text-muted)', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                {exp.points.map((pt, i) => (
-                                    <li key={i}>{pt}</li>
+                            <div style={{ marginBottom: '1.5rem' }}>
+                                <h3 style={{ fontSize: '1.7rem', fontWeight: 700, color: 'var(--current-primary)', marginBottom: '1rem' }}>{exp.company}</h3>
+                                {exp.roles.map((role, rIdx) => (
+                                    <div key={rIdx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
+                                        <h4 style={{ fontSize: '1.2rem', fontWeight: 600 }}>{role.title}</h4>
+                                        <span style={{ color: 'var(--current-text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}>{role.date}</span>
+                                    </div>
                                 ))}
-                            </ul>
+                            </div>
+                            <p style={{ color: 'var(--current-text-muted)', lineHeight: 1.6, fontSize: '1.05rem' }}>
+                                {exp.highlight}
+                            </p>
                         </motion.div>
                     ))}
                 </div>

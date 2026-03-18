@@ -2,7 +2,7 @@
 
 Welcome to the source code for my personal developer portfolio! 
 
-👉 **[View the Live Portfolio Here](#)**
+👉 **[View the Live Portfolio Here](https://rikan47.netlify.app/)**
 
 ## About This Project
 This is a modern, responsive Single Page Application (SPA) designed to showcase my software engineering background, including my experience at Samsung R&D and my full-stack programming projects.
