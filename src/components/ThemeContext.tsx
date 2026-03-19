@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { useSecretCode } from '../hooks/useSecretCode';
+import { useShakeDetect } from '../hooks/useShakeDetect';
 import { Terminal } from 'lucide-react';
 
 interface ThemeContextType {
@@ -14,6 +15,21 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const secretTriggered = useSecretCode('sudo');
     const [isDevMode, setIsDevMode] = useState(false);
     const [showToast, setShowToast] = useState(false);
+
+    // Shared toggle function used by shake + multi-tap
+    const toggleDevMode = useCallback(() => {
+        setIsDevMode((prev) => {
+            const next = !prev;
+            if (next) {
+                setShowToast(true);
+                setTimeout(() => setShowToast(false), 3000);
+            }
+            return next;
+        });
+    }, []);
+
+    // Shake to toggle dev mode (gracefully no-ops on desktop)
+    useShakeDetect(toggleDevMode);
 
     useEffect(() => {
         // If secret is triggered, toggle dev mode
@@ -32,9 +48,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         }
     }, [isDevMode]);
 
-    const toggleDevMode = () => {
-        setIsDevMode((prev) => !prev);
-    };
+
 
     return (
         <ThemeContext.Provider value={{ isDevMode, toggleDevMode }}>

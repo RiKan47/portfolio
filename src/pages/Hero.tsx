@@ -1,8 +1,16 @@
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../components/ThemeContext';
+import { useMultiTap } from '../hooks/useMultiTap';
+import { useIsTouchDevice } from '../hooks/useIsTouchDevice';
 
 export const Hero = () => {
-    const { isDevMode } = useTheme();
+    const { isDevMode, toggleDevMode } = useTheme();
+    const isTouch = useIsTouchDevice();
+    const greetingRef = useRef<HTMLDivElement>(null);
+
+    // 5 rapid taps on the greeting toggles dev mode
+    useMultiTap(greetingRef, 5, 800, toggleDevMode);
 
     return (
         <section id="about" className="section container" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
@@ -12,7 +20,17 @@ export const Hero = () => {
                 transition={{ duration: 0.8 }}
                 style={{ width: '100%' }}
             >
-                <div style={{ marginBottom: '1rem', color: 'var(--current-accent)', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
+                <div
+                    ref={greetingRef}
+                    style={{
+                        marginBottom: '1rem',
+                        color: 'var(--current-accent)',
+                        fontWeight: 600,
+                        fontFamily: 'var(--font-mono)',
+                        cursor: isTouch ? 'pointer' : 'default',
+                        userSelect: 'none',
+                    }}
+                >
                     {isDevMode ? '> console.log("Hello, World!");' : 'Hello, World!'}
                 </div>
                 <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.03em' }}>
@@ -22,7 +40,13 @@ export const Hero = () => {
                 <h2 style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)', color: 'var(--current-text-muted)', fontWeight: 400, maxWidth: '650px', lineHeight: 1.6 }}>
                     MS in Computer Science at UMass Amherst. Previously built core systems at Samsung R&D. I write scalable code that works.
                     <br /><br />
-                    <span style={{ fontSize: '0.95rem', color: 'var(--current-text)' }}>✨ Try typing <code style={{ fontFamily: 'var(--font-mono)', padding: '0.2rem 0.4rem', background: 'rgba(255,255,255,0.1)', borderRadius: '4px' }}>sudo</code> right now to unlock my developer mode!</span>
+                    <span style={{ fontSize: '0.95rem', color: 'var(--current-text)' }}>
+                        {isTouch ? (
+                            <>✨ Tap <code style={{ fontFamily: 'var(--font-mono)', padding: '0.2rem 0.4rem', background: 'rgba(255,255,255,0.1)', borderRadius: '4px' }}>Hello, World!</code> 5 times or shake your phone to unlock developer mode!</>
+                        ) : (
+                            <>✨ Try typing <code style={{ fontFamily: 'var(--font-mono)', padding: '0.2rem 0.4rem', background: 'rgba(255,255,255,0.1)', borderRadius: '4px' }}>sudo</code> right now to unlock my developer mode!</>
+                        )}
+                    </span>
                 </h2>
 
                 {isDevMode && (
