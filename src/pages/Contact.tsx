@@ -80,6 +80,22 @@ export const Contact = () => {
                     >
                         <Github size={18} /> GitHub
                     </motion.a>
+
+                    <motion.a
+                        whileHover={{ y: -3 }}
+                        whileTap={{ scale: 0.97 }}
+                        href="https://leetcode.com/u/RiKan47/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                            display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
+                            padding: '1rem 2rem', backgroundColor: 'transparent', color: 'var(--current-text)',
+                            border: '1px solid var(--current-border)', borderRadius: '8px', fontWeight: 600, cursor: 'pointer',
+                            textDecoration: 'none'
+                        }}
+                    >
+                        <Code size={18} /> LeetCode
+                    </motion.a>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
