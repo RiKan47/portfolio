@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
 import { useSecretCode } from '../hooks/useSecretCode';
 import { useShakeDetect } from '../hooks/useShakeDetect';
 import { Terminal } from 'lucide-react';
@@ -12,9 +12,10 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     // Listen for the secret words like "sudo" or "devmode"
-    const secretTriggered = useSecretCode('sudo');
-    const [isDevMode, setIsDevMode] = useState(false);
+    const secretTriggered = useSecretCode('sudo', true);
+    const [isDevMode, setIsDevMode] = useState(true);
     const [showToast, setShowToast] = useState(false);
+    const isFirstMount = useRef(true);
 
     // Shared toggle function used by shake + multi-tap
     const toggleDevMode = useCallback(() => {
@@ -32,6 +33,13 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     useShakeDetect(toggleDevMode);
 
     useEffect(() => {
+        if (isFirstMount.current) {
+            isFirstMount.current = false;
+            // Ensure the dev mode theme is applied immediately on mount
+            setIsDevMode(secretTriggered);
+            return;
+        }
+
         // If secret is triggered, toggle dev mode
         setIsDevMode(secretTriggered);
         if (secretTriggered) {

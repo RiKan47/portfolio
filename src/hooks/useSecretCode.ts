@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-export const useSecretCode = (secretCode: string) => {
-    const [success, setSuccess] = useState(false);
+export const useSecretCode = (secretCode: string, initialState: boolean = false) => {
+    const [success, setSuccess] = useState(initialState);
     const [input, setInput] = useState('');
 
     useEffect(() => {
