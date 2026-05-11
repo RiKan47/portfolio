@@ -56,6 +56,18 @@ export const Timeline = ({ items }: TimelineProps) => {
                                     ))}
                                 </div>
                             )}
+
+                            {item.link && (
+                                <a
+                                    href={item.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="section-link"
+                                    style={{ marginTop: '1rem', fontSize: '0.85rem' }}
+                                >
+                                    View on GitHub →
+                                </a>
+                            )}
                         </div>
                     </motion.div>
                 );

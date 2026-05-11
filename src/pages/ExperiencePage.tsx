@@ -26,7 +26,7 @@ export const ExperiencePage = () => {
         }
     ];
 
-    const techStack = ["C++", "Python", "Linux", "PowerShell", "5G NR", "LTE", "CI/CD", "Git"];
+    const techStack = ["C++", "Python", "Linux", "LTE", "GTest"];
 
     return (
         <motion.div
