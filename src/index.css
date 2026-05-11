@@ -1,25 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
 :root {
-  /* Radiant SDE Light Theme Colors */
-  --bg-color: #f8fafc;
-  --text-color: #0f172a;
-  --text-muted: #64748b;
-  --primary-color: #2563eb;
-  --accent-color: #3b82f6;
-  --border-color: #e2e8f0;
+  /* Apple Liquid Glass Theme Colors */
+  --bg-color: #f5f5f7;
+  --text-color: #1d1d1f;
+  --text-muted: #6e6e73;
+  --primary-color: #0071e3;
+  --accent-color: #2997ff;
+  --border-color: rgba(255, 255, 255, 0.45);
 
   /* Developer/Easter Egg Theme Colors */
   --dev-bg-color: #0d1117;
-  --dev-text-color: #c9d1d9;
+  --dev-text-color: #e6edf3;
   --dev-text-muted: #8b949e;
   --dev-primary-color: #58a6ff;
   --dev-accent-color: #79c0ff;
   --dev-border-color: #30363d;
 
   /* Fonts */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 
-  /* Shared variables */
+  /* Shared (light mode defaults) */
   --current-bg: var(--bg-color);
   --current-text: var(--text-color);
   --current-text-muted: var(--text-muted);
@@ -41,10 +43,17 @@
   --current-font: var(--font-mono);
 }
 
+/* ==========================================
+   Reset
+   ========================================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -54,44 +63,89 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, font-family var(--transition-speed) ease;
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease,
+              font-family var(--transition-speed) ease;
+  position: relative;
+  overflow-x: hidden;
 }
 
-@keyframes float-orbs {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  50% { transform: translate(-3vw, 3vh) rotate(5deg) scale(1.05); }
-  100% { transform: translate(3vw, -3vh) rotate(-5deg) scale(0.95); }
+/* ==========================================
+   Liquid Glass Background Mesh
+   Vivid gradient orbs that show THROUGH glass
+   ========================================== */
+@keyframes float-orb-1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(5vw, -8vh) scale(1.1); }
+  66%  { transform: translate(-3vw, 5vh) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 
-body::before, body::after {
+@keyframes float-orb-2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(-6vw, 4vh) scale(0.9); }
+  66%  { transform: translate(4vw, -6vh) scale(1.08); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes float-orb-3 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(3vw, 6vh) scale(1.05); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Gradient mesh orbs — the magic behind glass panels */
+body::before,
+body::after {
   content: '';
   position: fixed;
-  width: 70vw;
-  height: 70vh;
   border-radius: 50%;
   z-index: -1;
   pointer-events: none;
-  filter: blur(120px);
-  opacity: 1;
   transition: opacity var(--transition-speed) ease;
-  animation: float-orbs 25s ease-in-out infinite alternate;
 }
 
 body::before {
-  top: -20vh;
-  left: -10vw;
-  background: rgba(56, 189, 248, 0.15); /* Professional Azure */
+  top: -15vh;
+  left: -5vw;
+  width: 55vw;
+  height: 55vh;
+  background: radial-gradient(circle, rgba(0, 113, 227, 0.28) 0%, rgba(41, 151, 255, 0.14) 40%, transparent 70%);
+  filter: blur(60px);
+  animation: float-orb-1 20s ease-in-out infinite;
 }
 
 body::after {
-  bottom: -20vh;
-  right: -10vw;
-  background: rgba(148, 163, 184, 0.15); /* Professional Slate */
-  animation-delay: -12.5s;
+  bottom: -10vh;
+  right: -5vw;
+  width: 50vw;
+  height: 50vh;
+  background: radial-gradient(circle, rgba(175, 82, 222, 0.24) 0%, rgba(255, 45, 85, 0.10) 50%, transparent 70%);
+  filter: blur(60px);
+  animation: float-orb-2 25s ease-in-out infinite;
 }
 
+/* Third orb via #root pseudo-element */
+#root::before {
+  content: '';
+  position: fixed;
+  top: 30vh;
+  left: 30vw;
+  width: 40vw;
+  height: 40vh;
+  background: radial-gradient(circle, rgba(52, 199, 89, 0.18) 0%, rgba(0, 199, 190, 0.12) 40%, transparent 70%);
+  filter: blur(80px);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+  animation: float-orb-3 30s ease-in-out infinite;
+  transition: opacity var(--transition-speed) ease;
+}
+
+/* Dev mode: hide the light orbs, show dark atmosphere */
 [data-theme="developer"] body::before,
-[data-theme="developer"] body::after {
+[data-theme="developer"] body::after,
+[data-theme="developer"] #root::before {
   opacity: 0;
 }
 
@@ -99,16 +153,20 @@ body::after {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-/* Base Layout Classes */
+/* ==========================================
+   Base Layout
+   ========================================== */
 .container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 2rem;
   width: 100%;
@@ -118,21 +176,51 @@ a {
   padding: 6rem 0;
 }
 
-/* Glassmorphism utilities */
+/* ==========================================
+   Glassmorphism — Apple Liquid Glass
+   LOW opacity bg so background orbs refract through
+   ========================================== */
 .glass {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 1);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 8px 32px rgba(31, 38, 135, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.glass:hover {
+  background: rgba(255, 255, 255, 0.30);
+  box-shadow:
+    0 12px 40px rgba(31, 38, 135, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.55);
 }
 
 [data-theme="developer"] .glass {
-  background: rgba(13, 17, 23, 0.7);
-  border: 1px solid rgba(88, 166, 255, 0.2);
+  background: rgba(22, 27, 34, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(88, 166, 255, 0.15);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(88, 166, 255, 0.05);
 }
 
-/* Header */
+[data-theme="developer"] .glass:hover {
+  background: rgba(22, 27, 34, 0.85);
+  border-color: rgba(88, 166, 255, 0.30);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(88, 166, 255, 0.25),
+    inset 0 1px 0 rgba(88, 166, 255, 0.08);
+}
+
+/* ==========================================
+   Header / Navigation — Liquid Glass Nav
+   ========================================== */
 .header {
   position: fixed;
   top: 0;
@@ -144,14 +232,26 @@ a {
 }
 
 .header.scrolled {
-  border-bottom: 1px solid var(--current-border);
+  background: rgba(245, 245, 247, 0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="developer"] .header.scrolled {
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(88, 166, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 72px;
 }
 
 .nav-links {
@@ -161,11 +261,13 @@ a {
 
 .nav-link {
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--current-text-muted);
   transition: color 0.2s ease;
   cursor: pointer;
   position: relative;
+  letter-spacing: -0.01em;
+  padding: 0.25rem 0;
 }
 
 .nav-link:hover,
@@ -176,12 +278,13 @@ a {
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -2px;
   left: 0;
   width: 0%;
   height: 2px;
-  background-color: var(--current-primary);
+  background: linear-gradient(90deg, var(--current-primary), var(--current-accent));
   transition: width 0.3s ease;
+  border-radius: 1px;
 }
 
 .nav-link:hover::after,
@@ -190,10 +293,15 @@ a {
 }
 
 .logo {
-  font-weight: 800;
-  font-size: 1.5rem;
-  letter-spacing: -0.05em;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.04em;
   color: var(--current-text);
+  transition: color 0.2s ease;
+}
+
+.logo:hover {
+  color: var(--current-primary);
 }
 
 [data-theme="developer"] .logo::before {
@@ -206,7 +314,285 @@ a {
   color: var(--current-primary);
 }
 
-/* Geeky Developer Grid Overlay */
+/* ==========================================
+   Buttons — Shared interaction styles
+   ========================================== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background-color: var(--current-text);
+  color: var(--current-bg);
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+[data-theme="developer"] .btn-primary {
+  background-color: var(--dev-primary-color);
+  color: #0d1117;
+  border-color: var(--dev-primary-color);
+}
+
+[data-theme="developer"] .btn-primary:hover {
+  box-shadow: 0 8px 24px rgba(88, 166, 255, 0.25), 0 0 0 1px rgba(88, 166, 255, 0.4);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background-color: transparent;
+  color: var(--current-text);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+
+[data-theme="developer"] .btn-outline {
+  border-color: var(--dev-border-color);
+}
+
+.btn-outline:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--current-text-muted);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="developer"] .btn-outline:hover {
+  background: rgba(88, 166, 255, 0.08);
+  border-color: rgba(88, 166, 255, 0.3);
+}
+
+.btn-outline:active {
+  transform: translateY(0);
+}
+
+/* ==========================================
+   Tech Tags — Frosted pills
+   ========================================== */
+.tech-tag {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--current-text-muted);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 0.5px solid rgba(255, 255, 255, 0.35);
+  transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+  background: rgba(255, 255, 255, 0.40);
+  color: var(--current-text);
+}
+
+[data-theme="developer"] .tech-tag {
+  background: rgba(88, 166, 255, 0.08);
+  border-color: rgba(88, 166, 255, 0.18);
+  color: var(--dev-accent-color);
+  backdrop-filter: none;
+}
+
+[data-theme="developer"] .tech-tag:hover {
+  background: rgba(88, 166, 255, 0.15);
+  border-color: rgba(88, 166, 255, 0.3);
+}
+
+/* ==========================================
+   Alternating Timeline
+   ========================================== */
+.timeline-alt {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.timeline-alt-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--current-primary) 0%,
+    rgba(175, 82, 222, 0.4) 50%,
+    var(--current-border) 100%
+  );
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.timeline-alt-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  width: 50%;
+}
+
+.timeline-alt-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Left side items */
+.timeline-alt-item--left {
+  justify-content: flex-end;
+  padding-right: 3rem;
+  margin-left: 0;
+}
+
+/* Right side items */
+.timeline-alt-item--right {
+  justify-content: flex-start;
+  padding-left: 3rem;
+  margin-left: 50%;
+}
+
+/* Dot positioning */
+.timeline-alt-dot-wrapper {
+  position: absolute;
+  top: 1.75rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.timeline-alt-item--left .timeline-alt-dot-wrapper {
+  right: -0.6rem;
+}
+
+.timeline-alt-item--right .timeline-alt-dot-wrapper {
+  left: -0.6rem;
+}
+
+.timeline-alt-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--current-primary);
+  border: 3px solid var(--current-bg);
+  box-shadow: 0 0 0 2px var(--current-primary), 0 0 12px rgba(0, 113, 227, 0.3);
+  transition: background 0.3s ease;
+}
+
+.timeline-alt-item--active .timeline-alt-dot {
+  background: #34c759;
+  box-shadow: 0 0 0 2px #34c759, 0 0 16px rgba(52, 199, 89, 0.4);
+}
+
+/* Pulse animation for "Currently Working On" */
+@keyframes pulse-ring {
+  0%  { box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(52, 199, 89, 0); }
+  100%{ box-shadow: 0 0 0 0 rgba(52, 199, 89, 0); }
+}
+
+.pulse-dot {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Card content */
+.timeline-alt-content {
+  padding: 2rem;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.timeline-alt-item--active .timeline-alt-content {
+  border-left: 3px solid #34c759;
+  box-shadow:
+    0 8px 32px rgba(52, 199, 89, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="developer"] .timeline-alt-item--active .timeline-alt-content {
+  box-shadow:
+    0 8px 32px rgba(52, 199, 89, 0.08),
+    inset 0 1px 0 rgba(52, 199, 89, 0.05);
+}
+
+.timeline-alt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.timeline-alt-icon {
+  color: var(--current-primary);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-alt-item--active .timeline-alt-icon {
+  color: #34c759;
+}
+
+.timeline-alt-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.timeline-alt-subtitle {
+  font-size: 0.9rem;
+  color: var(--current-text-muted);
+  margin-top: 0.25rem;
+}
+
+.timeline-alt-date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--current-text-muted);
+  white-space: nowrap;
+}
+
+.timeline-alt-description {
+  color: var(--current-text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.timeline-alt-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ==========================================
+   Developer Grid Overlay
+   ========================================== */
 .dev-grid {
   position: fixed;
   top: 0;
@@ -214,8 +600,8 @@ a {
   width: 100vw;
   height: 100vh;
   background-image:
-    linear-gradient(to right, rgba(88, 166, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(88, 166, 255, 0.1) 1px, transparent 1px);
+    linear-gradient(to right, rgba(88, 166, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(88, 166, 255, 0.06) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
   z-index: 9999;
@@ -227,7 +613,9 @@ a {
   opacity: 1;
 }
 
-/* Toasts / Notifications */
+/* ==========================================
+   Toasts / Notifications
+   ========================================== */
 .toast-container {
   position: fixed;
   bottom: 2rem;
@@ -236,14 +624,28 @@ a {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  animation: toast-slide-in 0.4s ease-out;
+}
+
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .toast {
   padding: 1rem 1.5rem;
-  background: var(--current-bg);
-  border: 1px solid var(--current-border);
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.12);
   font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--current-text);
@@ -253,6 +655,137 @@ a {
 }
 
 [data-theme="developer"] .toast {
+  background: rgba(13, 17, 23, 0.85);
   border-color: var(--current-primary);
-  box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
+  box-shadow: 0 0 24px rgba(88, 166, 255, 0.15), 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+}
+
+/* ==========================================
+   Back to Home link
+   ========================================== */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--current-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--current-primary);
+  gap: 0.75rem;
+}
+
+/* ==========================================
+   Section Links (View All, View Full Experience)
+   ========================================== */
+.section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--current-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: gap 0.2s ease, opacity 0.2s ease;
+}
+
+.section-link:hover {
+  gap: 0.75rem;
+  opacity: 0.85;
+}
+
+/* ==========================================
+   Code hint inline styling (light mode)
+   ========================================== */
+.code-hint {
+  font-family: var(--font-mono);
+  padding: 0.2rem 0.5rem;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+[data-theme="developer"] .code-hint {
+  background: rgba(88, 166, 255, 0.12);
+  color: var(--dev-accent-color);
+}
+
+/* ==========================================
+   Footer
+   ========================================== */
+.footer {
+  text-align: center;
+  padding: 2.5rem 0;
+  color: var(--current-text-muted);
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: auto;
+}
+
+[data-theme="developer"] .footer {
+  border-top-color: rgba(88, 166, 255, 0.08);
+}
+
+/* ==========================================
+   Responsive
+   ========================================== */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  /* Collapse alternating timeline to single column */
+  .timeline-alt-line {
+    left: 1rem;
+    transform: none;
+  }
+
+  .timeline-alt-item {
+    width: 100%;
+    margin-left: 0 !important;
+    padding-left: 2.5rem !important;
+    padding-right: 0 !important;
+  }
+
+  .timeline-alt-dot-wrapper {
+    left: 0.4rem !important;
+    right: auto !important;
+  }
+
+  .timeline-alt-content {
+    padding: 1.5rem;
+  }
+
+  .timeline-alt-header {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    gap: 0.75rem;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+  }
 }

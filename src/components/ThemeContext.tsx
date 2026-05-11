@@ -12,8 +12,8 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     // Listen for the secret words like "sudo" or "devmode"
-    const secretTriggered = useSecretCode('sudo', true);
-    const [isDevMode, setIsDevMode] = useState(true);
+    const secretTriggered = useSecretCode('sudo');
+    const [isDevMode, setIsDevMode] = useState(false);
     const [showToast, setShowToast] = useState(false);
     const isFirstMount = useRef(true);
 

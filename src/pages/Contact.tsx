@@ -34,17 +34,12 @@ export const Contact = () => {
                     Whether you have a question, an internship opportunity, or just want to say hi, I'll try my best to get back to you!
                 </p>
 
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '1.25rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
                     <motion.button
                         whileHover={{ y: -3 }}
                         whileTap={{ scale: 0.97 }}
                         onClick={handleCopyEmail}
-                        style={{
-                            display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
-                            padding: '1rem 2rem', backgroundColor: 'var(--current-text)', color: 'var(--current-bg)',
-                            borderRadius: '8px', fontWeight: 600, transition: 'all 0.2s',
-                            border: '1px solid transparent', cursor: 'pointer', fontFamily: 'inherit', fontSize: '1rem'
-                        }}
+                        className="btn-primary"
                     >
                         <Mail size={18} /> {emailCopied ? 'Copied Masked Email!' : 'Email Me'}
                     </motion.button>
@@ -55,12 +50,7 @@ export const Contact = () => {
                         href="https://www.linkedin.com/in/rishikanth-0605"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{
-                            display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
-                            padding: '1rem 2rem', backgroundColor: 'transparent', color: 'var(--current-text)',
-                            border: '1px solid var(--current-border)', borderRadius: '8px', fontWeight: 600, cursor: 'pointer',
-                            textDecoration: 'none'
-                        }}
+                        className="btn-outline"
                     >
                         <Linkedin size={18} /> LinkedIn
                     </motion.a>
@@ -71,12 +61,7 @@ export const Contact = () => {
                         href="https://github.com/RiKan47"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{
-                            display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
-                            padding: '1rem 2rem', backgroundColor: 'transparent', color: 'var(--current-text)',
-                            border: '1px solid var(--current-border)', borderRadius: '8px', fontWeight: 600, cursor: 'pointer',
-                            textDecoration: 'none'
-                        }}
+                        className="btn-outline"
                     >
                         <Github size={18} /> GitHub
                     </motion.a>
@@ -87,12 +72,7 @@ export const Contact = () => {
                         href="https://leetcode.com/u/RiKan47/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{
-                            display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
-                            padding: '1rem 2rem', backgroundColor: 'transparent', color: 'var(--current-text)',
-                            border: '1px solid var(--current-border)', borderRadius: '8px', fontWeight: 600, cursor: 'pointer',
-                            textDecoration: 'none'
-                        }}
+                        className="btn-outline"
                     >
                         <Code size={18} /> LeetCode
                     </motion.a>
@@ -105,12 +85,7 @@ export const Contact = () => {
                         href="/Resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{
-                            display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
-                            padding: '0.8rem 1.5rem', backgroundColor: 'transparent', color: 'var(--current-text)',
-                            border: '1px solid var(--current-border)', borderRadius: '8px', fontWeight: 600, cursor: 'pointer',
-                            textDecoration: 'none'
-                        }}
+                        className="btn-outline"
                     >
                         {isDevMode ? <Code size={18} /> : <FileText size={18} />}
                         {isDevMode ? 'fetch(--resume)' : 'View Resume'}

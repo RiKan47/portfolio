@@ -42,19 +42,20 @@ export const Hero = () => {
                     <br /><br />
                     <span style={{ fontSize: '0.95rem', color: 'var(--current-text)' }}>
                         {isTouch ? (
-                            <>✨ Tap <code style={{ fontFamily: 'var(--font-mono)', padding: '0.2rem 0.4rem', background: 'rgba(255,255,255,0.1)', borderRadius: '4px' }}>Hello, World!</code> 5 times or shake your phone to unlock developer mode!</>
+                            <>✨ Tap <code className="code-hint">Hello, World!</code> 5 times or shake your phone to unlock developer mode!</>
                         ) : (
-                            <>✨ Try typing <code style={{ fontFamily: 'var(--font-mono)', padding: '0.2rem 0.4rem', background: 'rgba(255,255,255,0.1)', borderRadius: '4px' }}>sudo</code> right now to unlock my developer mode!</>
+                            <>✨ Try typing <code className="code-hint">sudo</code> right now to unlock my developer mode!</>
                         )}
                     </span>
                 </h2>
 
                 {isDevMode && (
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4 }}
                         className="glass"
-                        style={{ marginTop: '2rem', padding: '1rem', display: 'inline-block', borderRadius: '8px', fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}
+                        style={{ marginTop: '2rem', padding: '1.25rem 1.5rem', display: 'inline-block', borderRadius: '12px', fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}
                     >
                         <span style={{ color: '#ff7b72' }}>const</span> <span style={{ color: '#79c0ff' }}>status</span> <span style={{ color: '#ff7b72' }}>=</span> <span style={{ color: '#a5d6ff' }}>"actively seeking opportunities"</span>;
                         <br />

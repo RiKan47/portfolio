@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTheme } from '../components/ThemeContext';
-import { LineChart, Database, BrainCircuit } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { LineChart, Database, BrainCircuit, ArrowRight } from 'lucide-react';
 
 export const Projects = () => {
     const { isDevMode } = useTheme();
@@ -30,9 +31,7 @@ export const Projects = () => {
         hidden: { opacity: 0 },
         show: {
             opacity: 1,
-            transition: {
-                staggerChildren: 0.2
-            }
+            transition: { staggerChildren: 0.2 }
         }
     };
 
@@ -43,9 +42,14 @@ export const Projects = () => {
 
     return (
         <section id="projects" className="section container">
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', fontWeight: 700, letterSpacing: '-0.02em', textAlign: 'center' }}>
-                {isDevMode ? 'projects.map((p) => <Card {...p} />)' : 'Featured Projects'}
-            </h2>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '3rem' }}>
+                <h2 style={{ fontSize: '2.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                    {isDevMode ? 'projects.map((p) => <Card {...p} />)' : 'Featured Projects'}
+                </h2>
+                <Link to="/projects" className="section-link" style={{ whiteSpace: 'nowrap' }}>
+                    View All <ArrowRight size={16} />
+                </Link>
+            </div>
 
             <motion.div
                 variants={containerVariants}
@@ -64,7 +68,7 @@ export const Projects = () => {
 
                         <h3 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: '1rem' }}>{proj.name}</h3>
 
-                        <p style={{ color: 'var(--current-text-muted)', marginBottom: '2rem', flexGrow: 1 }}>
+                        <p style={{ color: 'var(--current-text-muted)', marginBottom: '2rem', flexGrow: 1, lineHeight: 1.7 }}>
                             {proj.description}
                         </p>
 
@@ -76,11 +80,11 @@ export const Projects = () => {
                             </div>
                         )}
 
-                        <ul style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--current-text-muted)', listStyle: 'none', padding: 0 }}>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
                             {proj.tech.map((t, i) => (
-                                <li key={i}>{t}</li>
+                                <span key={i} className="tech-tag">{t}</span>
                             ))}
-                        </ul>
+                        </div>
                     </motion.div>
                 ))}
             </motion.div>
