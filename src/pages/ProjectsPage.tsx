@@ -12,14 +12,22 @@ export const ProjectsPage = () => {
         title: "Agentic RAG Research Extern",
         subtitle: "Industry Experience at Adobe",
         date: "Jan 2026 – Present",
-        description: "Building a multi-doc QA pipeline using LlamaIndex & LangGraph. Designing a multi-hop reasoning benchmark on the Enron email dataset to tackle data contamination issues during LLM training, where models answer from parametric memory instead of from the provided documents.",
-        tech: ["LlamaIndex", "LangGraph", "Python", "RAG"],
+        description: "Built a multi-document QA pipeline using FlashRAG, indexing 1,000+ papers with sub-second latency. Developed a multi-hop reasoning benchmark on the Enron corpus to evaluate agentic retrieval and mitigate data pollution. Created a workflow using tool calling to retrieve missing context mid-inference, reducing hallucinations.",
+        tech: ["Python", "FlashRAG", "LLMs", "RAG"],
         icon: <Search size={20} />,
         isActive: true
     };
 
     const timelineItems: TimelineItem[] = [
         currentlyWorkingOn,
+        {
+            title: "In-Memory Key-Value Store",
+            subtitle: "Go",
+            date: "Spring 2026",
+            description: "Engineered a Redis-compatible in-memory data store in Go, implementing the RESP parser and TCP networking to support concurrent client connections via goroutines. Built a leader-follower replication system supporting full state synchronization and real-time command propagation across replica nodes. Implemented key expiration (TTL) and RDB file parsing.",
+            tech: ["Go", "Redis", "TCP", "Concurrency"],
+            icon: <Database size={20} />
+        },
         {
             title: "ML Systems Debloater",
             subtitle: "Systems for Deep Learning",
@@ -57,7 +65,7 @@ export const ProjectsPage = () => {
             title: "Distributed Trading Platform",
             subtitle: "Stock Market Application",
             date: "Spring 2025",
-            description: "AWS-hosted microservices trading engine. Implemented Raft and Multi-Paxos consensus for totally ordered writes across replicas, alongside an LRU caching layer with server-push invalidations for automatic leader failover. Load-tested under concurrent multi-user traffic.",
+            description: "Built a fault-tolerant microservices trading platform on AWS; implemented LRU caching with server-push invalidations and leader-based replication for automatic failover. Implemented Raft and Multi-Paxos consensus algorithms to guarantee totally ordered writes across replicas. Load-tested the system under concurrent multi-user traffic.",
             tech: ["React", "Python", "AWS", "REST APIs", "Raft", "Paxos"],
             icon: <LineChart size={20} />
         },
@@ -65,7 +73,7 @@ export const ProjectsPage = () => {
             title: "Relational DBMS",
             subtitle: "Database Implementation",
             date: "Spring 2025",
-            description: "Custom relational database management system from scratch in Java. Includes a buffer pool manager, on-disk page management, heap file engine, B+ tree index structure, and an iterator-based query executor supporting Block Nested Loop (BNL) joins.",
+            description: "Engineered a custom relational database management system from scratch in Java. Implemented a buffer pool manager, on-disk page management, and a heap file engine. Created a B+ tree index structure, improving database lookup times from O(N) to O(log N), and an iterator-based query executor supporting Block Nested Loop (BNL) joins.",
             tech: ["Java", "B+ Tree", "Buffer Pool", "DBMS"],
             icon: <Database size={20} />
         },

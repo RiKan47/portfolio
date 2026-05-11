@@ -1,29 +1,29 @@
 import { motion } from 'framer-motion';
 import { useTheme } from '../components/ThemeContext';
 import { Link } from 'react-router-dom';
-import { LineChart, Database, BrainCircuit, ArrowRight } from 'lucide-react';
+import { LineChart, Database, Search, ArrowRight } from 'lucide-react';
 
 export const Projects = () => {
     const { isDevMode } = useTheme();
 
     const projects = [
         {
-            name: "Distributed Trading Platform",
-            description: "AWS-hosted microservices trading engine. Implemented Paxos consensus for totally ordered writes across replicas, alongside an LRU caching layer with server-push invalidations to handle automatic leader failover.",
-            tech: ["React", "Python", "AWS", "REST APIs"],
-            icon: <LineChart size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
+            name: "Agentic RAG Research Extern",
+            description: "Built a multi-document QA pipeline using FlashRAG, indexing 1,000+ papers with sub-second latency. Designed a multi-hop reasoning benchmark on the Enron corpus to robustly evaluate agentic retrieval.",
+            tech: ["Python", "FlashRAG", "LLMs", "RAG"],
+            icon: <Search size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
         },
         {
-            name: "Relational DBMS",
-            description: "Custom relational database built from scratch. Features an on-disk page manager, a robust Buffer Pool Manager, and customized B+ Tree indexing to optimize Block Nested Loop (BNL) join execution.",
-            tech: ["Java", "B+ Tree", "BNL Joins", "DBMS"],
+            name: "In-Memory Key-Value Store",
+            description: "Engineered a Redis-compatible in-memory data store in Go, implementing the RESP parser and TCP networking. Built a leader-follower replication system supporting full state synchronization.",
+            tech: ["Go", "Redis", "TCP", "Concurrency"],
             icon: <Database size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
         },
         {
-            name: "ML Algorithm Suite",
-            description: "Zero-dependency machine learning models implemented in pure Python. Includes custom training pipelines for k-Nearest Neighbors, Multinomial Naive Bayes, Decision Trees, and multi-layer Neural Networks.",
-            tech: ["Python", "Machine Learning", "Neural Networks"],
-            icon: <BrainCircuit size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
+            name: "Distributed Trading Platform",
+            description: "AWS-hosted microservices trading engine. Implemented Raft and Multi-Paxos consensus for totally ordered writes across replicas, alongside an LRU caching layer with server-push invalidations.",
+            tech: ["React", "Python", "AWS", "Raft"],
+            icon: <LineChart size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
         }
     ];
 

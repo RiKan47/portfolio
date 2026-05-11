@@ -9,18 +9,23 @@ export const ExperiencePage = () => {
     const bulletPoints = [
         "Optimized MAC Uplink scheduling for Cell on Wheels deployments across Telus and Verizon modems, increasing cell capacity and LTE throughput by 25%.",
         "Profiled and optimized core C++ system modules in a Linux environment to resolve CPU performance bottlenecks, reducing cycle consumption and improving throughput by 15%.",
-        "Built automated CI/CD pipelines and regression test frameworks in Python and PowerShell, reducing manual log analysis from 25 minutes to a 10-minute scripted run.",
+        "Built automated log analysis application in Python, reducing manual log analysis time from 30 minutes to 5 minutes.",
         "Drove architectural improvements to the modem scheduler; contributed 100+ commits and 300+ code reviews over two years across the modem software stack."
     ];
 
     const achievements = [
+        {
+            title: "Course Grader & Project Mentor (COMPSCI 426)",
+            description: "Managed Agile sprints for an 8-student team building an event-ticketing application, evaluating system architecture and functional correctness.",
+            date: "Spring 2026"
+        },
         {
             title: "Samsung Excellence Award",
             description: "Recognized for exceptional contributions to system capacity improvement and core code optimization.",
             date: "April 2023"
         },
         {
-            title: "Samsung Professional Certificate",
+            title: "Software Excellency Certification",
             description: "Earned Samsung's Professional-level certification in algorithmic problem solving.",
             date: "October 2023"
         }
@@ -110,6 +115,30 @@ export const ExperiencePage = () => {
                             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--current-text-muted)' }}>{ach.date}</span>
                         </motion.div>
                     ))}
+                </div>
+
+                {/* Technologies */}
+                <h2 style={{ fontSize: '1.8rem', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: '2rem', marginTop: '4rem' }}>
+                    {isDevMode ? '// technologies' : 'Technologies'}
+                </h2>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', paddingBottom: '4rem' }}>
+                    <div className="glass" style={{ padding: '2rem', borderRadius: '16px' }}>
+                        <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--current-primary)' }}>Languages</h3>
+                        <p style={{ color: 'var(--current-text-muted)', lineHeight: 1.6 }}>C++, Python, Java, Go, Rust, C, TypeScript</p>
+                    </div>
+                    <div className="glass" style={{ padding: '2rem', borderRadius: '16px' }}>
+                        <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--current-primary)' }}>Tools & Infrastructure</h3>
+                        <p style={{ color: 'var(--current-text-muted)', lineHeight: 1.6 }}>AWS, Docker, Git, Linux, PostgreSQL, MongoDB, REST APIs</p>
+                    </div>
+                    <div className="glass" style={{ padding: '2rem', borderRadius: '16px' }}>
+                        <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--current-primary)' }}>Frameworks</h3>
+                        <p style={{ color: 'var(--current-text-muted)', lineHeight: 1.6 }}>Qt, GTest, FlashRAG, React</p>
+                    </div>
+                    <div className="glass" style={{ padding: '2rem', borderRadius: '16px' }}>
+                        <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--current-primary)' }}>Domains</h3>
+                        <p style={{ color: 'var(--current-text-muted)', lineHeight: 1.6 }}>LLMs, Agentic AI, Distributed Systems, Machine Learning, NLP</p>
+                    </div>
                 </div>
             </section>
         </motion.div>
