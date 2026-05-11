@@ -41,10 +41,18 @@ export const Hero = () => {
                     MS in Computer Science at UMass Amherst. Previously built core systems at Samsung R&D. I write scalable code that works.
                     <br /><br />
                     <span style={{ fontSize: '0.95rem', color: 'var(--current-text)' }}>
-                        {isTouch ? (
-                            <>✨ Tap <code className="code-hint">Hello, World!</code> 5 times or shake your phone to unlock developer mode!</>
+                        {isDevMode ? (
+                            isTouch ? (
+                                <>🔓 Tap <code className="code-hint">greeting</code> 5 times or shake to switch back to light mode</>
+                            ) : (
+                                <>🔓 Type <code className="code-hint">sudo</code> to exit developer mode</>
+                            )
                         ) : (
-                            <>✨ Try typing <code className="code-hint">sudo</code> right now to unlock my developer mode!</>
+                            isTouch ? (
+                                <>✨ Tap <code className="code-hint">Hello, World!</code> 5 times or shake your phone to unlock developer mode!</>
+                            ) : (
+                                <>✨ Try typing <code className="code-hint">sudo</code> right now to unlock my developer mode!</>
+                            )
                         )}
                     </span>
                 </h2>
