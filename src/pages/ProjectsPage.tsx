@@ -12,7 +12,7 @@ export const ProjectsPage = () => {
         title: "Agentic RAG Research Extern",
         subtitle: "Industry Experience at Adobe",
         date: "Jan 2026 – Present",
-        description: "Built a multi-document QA pipeline using FlashRAG, indexing 1,000+ papers with sub-second latency. Developed a multi-hop reasoning benchmark on the Enron corpus to evaluate agentic retrieval and mitigate data pollution. Created a workflow using tool calling to retrieve missing context mid-inference, reducing hallucinations.",
+        description: "Engineered a multi-document question-answering pipeline utilizing FlashRAG and LLMs to index 1,000+ research papers, achieving sub-second retrieval latency. Formulated a multi-hop reasoning benchmark on the Enron email corpus to rigorously evaluate agentic retrieval, circumventing data pollution. Orchestrated an agentic RAG workflow by implementing tool calling mechanisms to dynamically retrieve missing context mid-inference, successfully reducing hallucination rates.",
         tech: ["Python", "FlashRAG", "LLMs", "RAG"],
         icon: <Search size={20} />,
         isActive: true
@@ -24,7 +24,7 @@ export const ProjectsPage = () => {
             title: "In-Memory Key-Value Store",
             subtitle: "Go",
             date: "Spring 2026",
-            description: "Engineered a Redis-compatible in-memory data store in Go, implementing the RESP parser and TCP networking to support concurrent client connections via goroutines. Built a leader-follower replication system supporting full state synchronization and real-time command propagation across replica nodes. Implemented key expiration (TTL) and RDB file parsing.",
+            description: "Engineered a custom Redis-compatible data store in Go, leveraging goroutines and TCP networking to parse the RESP protocol and handle concurrent client connections. Designed a leader-follower replication system, guaranteeing full state synchronization and real-time command propagation across distributed nodes. Integrated robust data persistence by implementing TTL expiration scheduling and RDB file parsing.",
             tech: ["Go", "Redis", "TCP", "Concurrency"],
             icon: <Database size={20} />
         },
@@ -62,18 +62,18 @@ export const ProjectsPage = () => {
             icon: <FlaskConical size={20} />
         },
         {
-            title: "Distributed Trading Platform",
-            subtitle: "Stock Market Application",
+            title: "Stock Market Application",
+            subtitle: "Distributed Trading Platform",
             date: "Spring 2025",
-            description: "Built a fault-tolerant microservices trading platform on AWS; implemented LRU caching with server-push invalidations and leader-based replication for automatic failover. Implemented Raft and Multi-Paxos consensus algorithms to guarantee totally ordered writes across replicas. Load-tested the system under concurrent multi-user traffic.",
-            tech: ["React", "Python", "AWS", "REST APIs", "Raft", "Paxos"],
+            description: "Architected a fault-tolerant microservices trading platform deployed on AWS, implementing LRU caching with server-push invalidations and leader-based failover to maintain high availability. Applied Raft and Multi-Paxos consensus algorithms to guarantee totally ordered writes and tolerate node failures. Validated system resilience through extensive load-testing, ensuring strict data integrity and low latency.",
+            tech: ["Python", "AWS", "Raft", "Paxos"],
             icon: <LineChart size={20} />
         },
         {
-            title: "Relational DBMS",
-            subtitle: "Database Implementation",
+            title: "Database Implementation",
+            subtitle: "Relational DBMS",
             date: "Spring 2025",
-            description: "Engineered a custom relational database management system from scratch in Java. Implemented a buffer pool manager, on-disk page management, and a heap file engine. Created a B+ tree index structure, improving database lookup times from O(N) to O(log N), and an iterator-based query executor supporting Block Nested Loop (BNL) joins.",
+            description: "Engineered a custom relational Database Management System (DBMS) from scratch in Java, implementing core storage components such as a buffer pool manager, on-disk page management, and a heap file engine. Constructed a B+ tree index structure to optimize query execution, significantly improving database lookup times from O(N) to O(log N), and integrated an iterator-based query executor supporting Block Nested Loop (BNL) joins.",
             tech: ["Java", "B+ Tree", "Buffer Pool", "DBMS"],
             icon: <Database size={20} />
         },

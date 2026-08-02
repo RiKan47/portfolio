@@ -32,7 +32,7 @@ export const Experience = () => {
                         </div>
                     </div>
                     <p style={{ color: 'var(--current-text-muted)', lineHeight: 1.6, fontSize: '1.05rem', marginBottom: '2rem' }}>
-                        Engineered critical MAC Uplink optimizations for Telus and Verizon LTE modems, increasing capacity by 25%. Profiled core C++ system modules to eliminate CPU bottlenecks, and built an automated Python log analysis application that reduced manual processing time from 30 minutes to 5 minutes.
+                        Optimized MAC Uplink scheduling and core C++ system modules to surpass competitive benchmarks, increasing LTE throughput by 12-14%. Resolved CPU bottlenecks via variable access caching, and built an automated Python log analysis application that reduced manual processing time from 30 to 5 minutes per issue.
                     </p>
                     <Link to="/experience" className="section-link">
                         View Full Experience <ArrowRight size={16} />

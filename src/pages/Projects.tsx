@@ -9,20 +9,20 @@ export const Projects = () => {
     const projects = [
         {
             name: "Agentic RAG Research Extern",
-            description: "Built a multi-document QA pipeline using FlashRAG, indexing 1,000+ papers with sub-second latency. Designed a multi-hop reasoning benchmark on the Enron corpus to robustly evaluate agentic retrieval.",
+            description: "Engineered a multi-document QA pipeline using FlashRAG and LLMs to index 1,000+ papers. Formulated a multi-hop reasoning benchmark on the Enron corpus and orchestrated a tool-calling workflow to reduce hallucinations.",
             tech: ["Python", "FlashRAG", "LLMs", "RAG"],
             icon: <Search size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
         },
         {
             name: "In-Memory Key-Value Store",
-            description: "Engineered a Redis-compatible in-memory data store in Go, implementing the RESP parser and TCP networking. Built a leader-follower replication system supporting full state synchronization.",
+            description: "Engineered a custom Redis-compatible data store in Go, leveraging goroutines and TCP networking. Designed a leader-follower replication system and integrated robust data persistence with TTL scheduling and RDB file parsing.",
             tech: ["Go", "Redis", "TCP", "Concurrency"],
             icon: <Database size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
         },
         {
-            name: "Distributed Trading Platform",
-            description: "AWS-hosted microservices trading engine. Implemented Raft and Multi-Paxos consensus for totally ordered writes across replicas, alongside an LRU caching layer with server-push invalidations.",
-            tech: ["React", "Python", "AWS", "Raft"],
+            name: "Stock Market Application",
+            description: "Architected a fault-tolerant microservices trading platform on AWS, implementing LRU caching with server-push invalidations and leader-based failover. Applied Raft and Multi-Paxos consensus algorithms to guarantee totally ordered writes.",
+            tech: ["Python", "AWS", "Raft", "Paxos"],
             icon: <LineChart size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
         }
     ];

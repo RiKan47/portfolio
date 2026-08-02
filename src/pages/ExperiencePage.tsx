@@ -7,10 +7,9 @@ export const ExperiencePage = () => {
     const { isDevMode } = useTheme();
 
     const bulletPoints = [
-        "Optimized MAC Uplink scheduling for Cell on Wheels deployments across Telus and Verizon modems, increasing cell capacity and LTE throughput by 25%.",
-        "Profiled and optimized core C++ system modules in a Linux environment to resolve CPU performance bottlenecks, reducing cycle consumption and improving throughput by 15%.",
-        "Built automated log analysis application in Python, reducing manual log analysis time from 30 minutes to 5 minutes.",
-        "Drove architectural improvements to the modem scheduler; contributed 100+ commits and 300+ code reviews over two years across the modem software stack."
+        "Optimized MAC Uplink scheduling and core system modules in C++ to surpass competitive benchmarks for major North American carriers. Resolved CPU bottlenecks via variable access caching, streamlined conditional checks, and protocol-aligned algorithms, increasing LTE throughput by 12-14% (boosting tested uplink capacity from an advertised 50,000 kbps to ~57,000 kbps per cell for up to 1,200 UEs).",
+        "Developed an automated log analysis application in Python to streamline debugging processes, drastically reducing manual log analysis time from 30 minutes to 5 minutes per issue for the engineering team.",
+        "Drove architectural improvements to the modem scheduler by contributing 100+ commits and completing 300+ code reviews, significantly elevating code quality and system stability."
     ];
 
     const achievements = [
