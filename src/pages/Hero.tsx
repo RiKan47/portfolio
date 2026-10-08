@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { useTheme } from '../components/ThemeContext';
+import { useTheme } from '../components/theme';
 import { useMultiTap } from '../hooks/useMultiTap';
 import { useIsTouchDevice } from '../hooks/useIsTouchDevice';
 
@@ -38,7 +38,7 @@ export const Hero = () => {
                     <span style={{ color: 'var(--current-primary)' }}>backend systems</span> & scalable infrastructure.
                 </h1>
                 <h2 style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)', color: 'var(--current-text-muted)', fontWeight: 400, maxWidth: '650px', lineHeight: 1.6 }}>
-                    MS in Computer Science at UMass Amherst. Previously built core systems at Samsung R&D. I write scalable code that works.
+                    MS in Computer Science at UMass Amherst, graduating December 2026. Previously optimized C++ uplink MAC code at Samsung R&D. I build backend services, storage systems and tools for inspecting AI workflows.
                     <br /><br />
                     <span style={{ fontSize: '0.95rem', color: 'var(--current-text)' }}>
                         {isDevMode ? (

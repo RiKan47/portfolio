@@ -1,31 +1,20 @@
 import { motion } from 'framer-motion';
-import { useTheme } from '../components/ThemeContext';
+import { useTheme } from '../components/theme';
 import { Link } from 'react-router-dom';
 import { LineChart, Database, Search, ArrowRight } from 'lucide-react';
+import { projects } from '../data/portfolio';
 
 export const Projects = () => {
     const { isDevMode } = useTheme();
 
-    const projects = [
-        {
-            name: "Agentic RAG Research Extern",
-            description: "Engineered a multi-document QA pipeline using FlashRAG and LLMs to index 1,000+ papers. Formulated a multi-hop reasoning benchmark on the Enron corpus and orchestrated a tool-calling workflow to reduce hallucinations.",
-            tech: ["Python", "FlashRAG", "LLMs", "RAG"],
-            icon: <Search size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
-        },
-        {
-            name: "In-Memory Key-Value Store",
-            description: "Engineered a custom Redis-compatible data store in Go, leveraging goroutines and TCP networking. Designed a leader-follower replication system and integrated robust data persistence with TTL scheduling and RDB file parsing.",
-            tech: ["Go", "Redis", "TCP", "Concurrency"],
-            icon: <Database size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
-        },
-        {
-            name: "Stock Market Application",
-            description: "Architected a fault-tolerant microservices trading platform on AWS, implementing LRU caching with server-push invalidations and leader-based failover. Applied Raft and Multi-Paxos consensus algorithms to guarantee totally ordered writes.",
-            tech: ["Python", "AWS", "Raft", "Paxos"],
-            icon: <LineChart size={40} stroke="var(--current-primary)" strokeWidth="1.5" />
-        }
-    ];
+    const featuredProjects = projects.filter(project => project.featured);
+    const icons = {
+        database: <Database size={40} stroke="var(--current-primary)" strokeWidth="1.5" />,
+        search: <Search size={40} stroke="var(--current-primary)" strokeWidth="1.5" />,
+        chart: <LineChart size={40} stroke="var(--current-primary)" strokeWidth="1.5" />,
+        rocket: <Search size={40} />,
+        brain: <Search size={40} />,
+    };
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -56,13 +45,13 @@ export const Projects = () => {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
-                style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}
+                style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '2rem' }}
             >
-                {projects.map((proj, idx) => (
-                    <motion.div key={idx} variants={itemVariants} className="glass" style={{ padding: '2rem', borderRadius: '16px', display: 'flex', flexDirection: 'column' }}>
+                {featuredProjects.map((proj) => (
+                    <motion.div key={proj.id} variants={itemVariants} className="glass" style={{ padding: '2rem', borderRadius: '16px', display: 'flex', flexDirection: 'column' }}>
                         <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
                             <div style={{ marginRight: '1rem', flexShrink: 0 }}>
-                                {proj.icon}
+                                {icons[proj.icon]}
                             </div>
                         </div>
 
@@ -72,13 +61,9 @@ export const Projects = () => {
                             {proj.description}
                         </p>
 
-                        {isDevMode && (
-                            <div style={{ padding: '1rem', background: 'rgba(0,0,0,0.2)', borderRadius: '8px', marginBottom: '1.5rem', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#ff7b72' }}>
-                                Deployment Status: <span style={{ color: '#ffcc00' }}>Local Development</span>
-                                <br />
-                                Next Action: <span style={{ color: '#79c0ff' }}>Awaiting Production Push</span>
-                            </div>
-                        )}
+                        <Link to={`/projects#${proj.id}`} className="section-link" style={{ marginBottom: '1.25rem' }}>
+                            View project details <ArrowRight size={16} />
+                        </Link>
 
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
                             {proj.tech.map((t, i) => (

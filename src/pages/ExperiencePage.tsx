@@ -1,21 +1,18 @@
 import { motion } from 'framer-motion';
-import { useTheme } from '../components/ThemeContext';
+import { useTheme } from '../components/theme';
 import { Award, CheckCircle, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { samsung } from '../data/portfolio';
 
 export const ExperiencePage = () => {
     const { isDevMode } = useTheme();
 
-    const bulletPoints = [
-        "Optimized MAC Uplink scheduling and core system modules in C++ to surpass competitive benchmarks for major North American carriers. Resolved CPU bottlenecks via variable access caching, streamlined conditional checks, and protocol-aligned algorithms, increasing LTE throughput by 12-14% (boosting tested uplink capacity from an advertised 50,000 kbps to ~57,000 kbps per cell for up to 1,200 UEs).",
-        "Developed an automated log analysis application in Python to streamline debugging processes, drastically reducing manual log analysis time from 30 minutes to 5 minutes per issue for the engineering team.",
-        "Drove architectural improvements to the modem scheduler by contributing 100+ commits and completing 300+ code reviews, significantly elevating code quality and system stability."
-    ];
+    const bulletPoints = samsung.bullets;
 
     const achievements = [
         {
             title: "Course Grader & Project Mentor (COMPSCI 426)",
-            description: "Managed Agile sprints for an 8-student team building an event-ticketing application, evaluating system architecture and functional correctness.",
+            description: "Guided an 8-student team building an event-ticketing application, evaluating system architecture and functional correctness.",
             date: "Spring 2026"
         },
         {
@@ -61,10 +58,12 @@ export const ExperiencePage = () => {
                 >
                     <div style={{ marginBottom: '2rem' }}>
                         <h2 style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--current-primary)', marginBottom: '0.5rem' }}>Samsung R&D</h2>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap' }}>
-                            <h3 style={{ fontSize: '1.3rem', fontWeight: 600 }}>Senior Software Engineer</h3>
-                            <span style={{ color: 'var(--current-text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}>June 2022 – January 2025</span>
-                        </div>
+                        {samsung.roles.map(role => (
+                            <div key={role.title} style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'baseline', flexWrap: 'wrap', marginTop: '0.75rem' }}>
+                                <h3 style={{ fontSize: '1.15rem', fontWeight: 600 }}>{role.title}</h3>
+                                <span style={{ color: 'var(--current-text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}>{role.date}</span>
+                            </div>
+                        ))}
                     </div>
 
                     <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -97,7 +96,7 @@ export const ExperiencePage = () => {
                     {isDevMode ? '// achievements' : 'Achievements'}
                 </h2>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1.5rem' }}>
                     {achievements.map((ach, idx) => (
                         <motion.div
                             key={idx}
@@ -124,15 +123,15 @@ export const ExperiencePage = () => {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', paddingBottom: '4rem' }}>
                     <div className="glass" style={{ padding: '2rem', borderRadius: '16px' }}>
                         <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--current-primary)' }}>Languages</h3>
-                        <p style={{ color: 'var(--current-text-muted)', lineHeight: 1.6 }}>C++, Python, Java, Go, Rust, C, TypeScript</p>
+                        <p style={{ color: 'var(--current-text-muted)', lineHeight: 1.6 }}>C++, Python, Go, Java, SQL, TypeScript</p>
                     </div>
                     <div className="glass" style={{ padding: '2rem', borderRadius: '16px' }}>
                         <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--current-primary)' }}>Tools & Infrastructure</h3>
-                        <p style={{ color: 'var(--current-text-muted)', lineHeight: 1.6 }}>AWS, Docker, Git, Linux, PostgreSQL, MongoDB, REST APIs</p>
+                        <p style={{ color: 'var(--current-text-muted)', lineHeight: 1.6 }}>Docker, Git, GitHub Actions, Linux, SQLite, TCP/HTTP</p>
                     </div>
                     <div className="glass" style={{ padding: '2rem', borderRadius: '16px' }}>
                         <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--current-primary)' }}>Frameworks</h3>
-                        <p style={{ color: 'var(--current-text-muted)', lineHeight: 1.6 }}>Qt, GTest, FlashRAG, React</p>
+                        <p style={{ color: 'var(--current-text-muted)', lineHeight: 1.6 }}>GTest, FlashRAG, PyTorch, FastAPI, React</p>
                     </div>
                     <div className="glass" style={{ padding: '2rem', borderRadius: '16px' }}>
                         <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--current-primary)' }}>Domains</h3>

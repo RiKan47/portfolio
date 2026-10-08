@@ -1,16 +1,22 @@
-# Rishikanth Manimeli - Personal Portfolio
+# Personal portfolio
 
-Welcome to the source code for my personal developer portfolio! 
+A React and TypeScript portfolio covering my software engineering experience, coursework and current projects.
 
-👉 **[View the Live Portfolio Here](https://rikan47.netlify.app/)**
+## Development
 
-## About This Project
-This is a modern, responsive Single Page Application (SPA) designed to showcase my software engineering background, including my experience at Samsung R&D and my full-stack programming projects.
+```bash
+npm ci
+npm run dev
+```
 
-### How It Was Built
-I vibecoded this portfolio from the ground up focusing on performance, modularity, and modern UI/UX principles:
-- **Framework:** React 18 + TypeScript for robust, type-safe component architecture.
-- **Build Tool:** Vite for lightning-fast compilation and optimized production bundling.
-- **Design System:** Custom CSS featuring a sleek Glassmorphism aesthetic, tailored color palettes, and full dark mode support.
-- **Assets:** Native Scalable Vector Graphics (SVGs) via `lucide-react` for crisp rendering across all resolutions without relying on bulky image files.
-- **Animations:** Subtle micro-interactions and smooth scroll transitions powered by Framer Motion.
+`npm run lint` checks source code. `npm run build` compiles TypeScript and creates the production site in `dist/`. `npm run preview` serves that build locally.
+
+## Content
+
+Project summaries, original dates, later milestones and Samsung experience live in `src/data/portfolio.ts`. Both the home page and detail pages use that data. Completed work should have a fixed end date; later extensions should not replace the original course dates. Add a project’s public repository URL to its `link` field when it becomes accessible.
+
+The resume download is `public/Resume.pdf`. Update it from the approved private resume source and verify the copied PDF checksum. Personal preparation and application tracking stay in private repositories.
+
+## Deployment
+
+This Vite SPA builds with `npm run build`, publishes `dist/`, and uses `public/_redirects` for client-side routes. The deployed site is https://rikan47.netlify.app/. Feature branches are used for review before merging to the production branch.

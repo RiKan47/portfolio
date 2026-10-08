@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 export interface TimelineItem {
+    id?: string;
+    updated?: string;
     title: string;
     subtitle?: string;
     date: string;
@@ -24,7 +26,9 @@ export const Timeline = ({ items }: TimelineProps) => {
                 const side = idx % 2 === 0 ? 'left' : 'right';
                 return (
                     <motion.div
-                        key={idx}
+                        key={item.id ?? idx}
+                        id={item.id}
+                        style={{ scrollMarginTop: '7rem' }}
                         className={`timeline-alt-item timeline-alt-item--${side} ${item.isActive ? 'timeline-alt-item--active' : ''}`}
                         initial={{ opacity: 0, x: side === 'left' ? -30 : 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -47,6 +51,7 @@ export const Timeline = ({ items }: TimelineProps) => {
                                 <span className="timeline-alt-date">{item.date}</span>
                             </div>
 
+                            {item.updated && <p style={{ color: 'var(--current-text-muted)', fontSize: '0.85rem', marginBottom: '1rem' }}>{item.updated}</p>}
                             <p className="timeline-alt-description">{item.description}</p>
 
                             {item.tech.length > 0 && (
