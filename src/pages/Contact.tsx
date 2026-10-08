@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useTheme } from '../components/ThemeContext';
+import { useTheme } from '../components/theme';
 import { Mail, FileText, Code, Github, Linkedin } from 'lucide-react';
 
 export const Contact = () => {
@@ -83,12 +83,11 @@ export const Contact = () => {
                         whileHover={{ y: -3 }}
                         whileTap={{ scale: 0.97 }}
                         href="/Resume.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        download="Rishikanth-Manimeli-Resume.pdf"
                         className="btn-outline"
                     >
                         {isDevMode ? <Code size={18} /> : <FileText size={18} />}
-                        {isDevMode ? 'fetch(--resume)' : 'View Resume'}
+                        {isDevMode ? 'fetch(--resume)' : 'Download Resume'}
                     </motion.a>
                 </div>
             </motion.div>

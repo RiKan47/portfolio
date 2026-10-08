@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
-import { useTheme } from '../components/ThemeContext';
+import { useTheme } from '../components/theme';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { samsung } from '../data/portfolio';
 
 export const Experience = () => {
     const { isDevMode } = useTheme();
@@ -27,12 +28,12 @@ export const Experience = () => {
                     <div style={{ marginBottom: '1.5rem' }}>
                         <h3 style={{ fontSize: '1.7rem', fontWeight: 700, color: 'var(--current-primary)', marginBottom: '0.5rem' }}>Samsung R&D</h3>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
-                            <h4 style={{ fontSize: '1.2rem', fontWeight: 600 }}>Senior Software Engineer</h4>
+                            <h4 style={{ fontSize: '1.2rem', fontWeight: 600 }}>Software Engineer → Senior Software Engineer</h4>
                             <span style={{ color: 'var(--current-text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}>06/2022 – 01/2025</span>
                         </div>
                     </div>
                     <p style={{ color: 'var(--current-text-muted)', lineHeight: 1.6, fontSize: '1.05rem', marginBottom: '2rem' }}>
-                        Optimized MAC Uplink scheduling and core C++ system modules to surpass competitive benchmarks, increasing LTE throughput by 12-14%. Resolved CPU bottlenecks via variable access caching, and built an automated Python log analysis application that reduced manual processing time from 30 to 5 minutes per issue.
+                        {samsung.summary}
                     </p>
                     <Link to="/experience" className="section-link">
                         View Full Experience <ArrowRight size={16} />

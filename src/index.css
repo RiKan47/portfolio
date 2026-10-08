@@ -522,6 +522,7 @@ a {
 
 /* Card content */
 .timeline-alt-content {
+  min-width: 0;
   padding: 2rem;
   border-radius: 20px;
   width: 100%;
@@ -751,6 +752,10 @@ a {
 
   .section {
     padding: 4rem 0;
+  }
+
+  .section.container {
+    padding-inline: 1.25rem;
   }
 
   /* Collapse alternating timeline to single column */

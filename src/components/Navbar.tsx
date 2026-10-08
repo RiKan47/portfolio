@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useTheme } from './ThemeContext';
+import { useTheme } from './theme';
 
 export const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
