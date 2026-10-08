@@ -30,8 +30,8 @@ export const Timeline = ({ items }: TimelineProps) => {
                         id={item.id}
                         style={{ scrollMarginTop: '7rem' }}
                         className={`timeline-alt-item timeline-alt-item--${side} ${item.isActive ? 'timeline-alt-item--active' : ''}`}
-                        initial={{ opacity: 0, x: side === 'left' ? -30 : 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.5, delay: idx * 0.06 }}
                     >

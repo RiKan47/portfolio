@@ -754,6 +754,10 @@ a {
     padding: 4rem 0;
   }
 
+  .section.container {
+    padding-inline: 1.25rem;
+  }
+
   /* Collapse alternating timeline to single column */
   .timeline-alt-line {
     left: 1rem;
