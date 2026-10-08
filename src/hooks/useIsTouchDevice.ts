@@ -1,16 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-/**
- * Returns true if the current device supports touch input.
- */
-export const useIsTouchDevice = (): boolean => {
-    const [isTouch, setIsTouch] = useState(false);
-
-    useEffect(() => {
-        const check =
-            'ontouchstart' in window || navigator.maxTouchPoints > 0;
-        setIsTouch(check);
-    }, []);
-
+export const useIsTouchDevice = () => {
+    const [isTouch] = useState(() =>
+        typeof window !== 'undefined' &&
+        ('ontouchstart' in window || navigator.maxTouchPoints > 0)
+    );
     return isTouch;
 };

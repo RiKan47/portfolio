@@ -1,39 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
-export const useSecretCode = (secretCode: string) => {
-    const [success, setSuccess] = useState(false);
-    const [input, setInput] = useState('');
-
+export const useSecretCode = (secretCode: string, onTrigger: () => void) => {
     useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            // Ignore keypresses if user is typing in an input or textarea
-            if (
-                document.activeElement?.tagName === 'INPUT' ||
-                document.activeElement?.tagName === 'TEXTAREA'
-            ) {
+        let input = '';
+        const code = secretCode.toLowerCase();
+        const handleKeyDown = (event: KeyboardEvent) => {
+            const target = document.activeElement;
+            if (target?.tagName === 'INPUT' || target?.tagName === 'TEXTAREA' ||
+                (target instanceof HTMLElement && target.isContentEditable) ||
+                event.key.length !== 1 || event.ctrlKey || event.metaKey || event.altKey) {
                 return;
             }
-
-            setInput((prev) => {
-                const nextInput = prev + e.key.toLowerCase();
-                // keep only the length of the secret code at maximum
-                if (nextInput.length > secretCode.length) {
-                    return nextInput.slice(nextInput.length - secretCode.length);
-                }
-                return nextInput;
-            });
+            input = (input + event.key.toLowerCase()).slice(-code.length);
+            if (input === code) {
+                input = '';
+                onTrigger();
+            }
         };
-
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [secretCode]);
-
-    useEffect(() => {
-        if (input === secretCode.toLowerCase()) {
-            setSuccess((prev) => !prev); // Toggle on success
-            setInput(''); // Reset
-        }
-    }, [input, secretCode]);
-
-    return success; // Returns true if developer mode is active
+    }, [secretCode, onTrigger]);
 };

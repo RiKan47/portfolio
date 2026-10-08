@@ -522,6 +522,7 @@ a {
 
 /* Card content */
 .timeline-alt-content {
+  min-width: 0;
   padding: 2rem;
   border-radius: 20px;
   width: 100%;

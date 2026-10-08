@@ -1,52 +1,30 @@
-import React, { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useSecretCode } from '../hooks/useSecretCode';
 import { useShakeDetect } from '../hooks/useShakeDetect';
 import { Terminal } from 'lucide-react';
-
-interface ThemeContextType {
-    isDevMode: boolean;
-    toggleDevMode: () => void;
-}
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+import { ThemeContext } from './theme';
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    // Listen for the secret words like "sudo" or "devmode"
-    const secretTriggered = useSecretCode('sudo');
-
     // Default to dev mode if user's system prefers dark
     const [isDevMode, setIsDevMode] = useState(() => {
         return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
     });
     const [showToast, setShowToast] = useState(false);
     const [toastMessage, setToastMessage] = useState('');
-    const isFirstMount = useRef(true);
 
     // Shared toggle function used by shake + multi-tap
     const toggleDevMode = useCallback(() => {
-        setIsDevMode((prev) => {
-            const next = !prev;
-            setToastMessage(next
-                ? 'Developer Mode Unlocked. Welcome, Admin.'
-                : 'Exiting Developer Mode. Back to normal.');
-            setShowToast(true);
-            setTimeout(() => setShowToast(false), 3000);
-            return next;
-        });
-    }, []);
+        const next = !isDevMode;
+        setIsDevMode(next);
+        setToastMessage(next
+            ? 'Developer Mode Unlocked. Welcome, Admin.'
+            : 'Exiting Developer Mode. Back to normal.');
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 3000);
+    }, [isDevMode]);
 
-    // Shake to toggle dev mode (gracefully no-ops on desktop)
+    useSecretCode('sudo', toggleDevMode);
     useShakeDetect(toggleDevMode);
-
-    useEffect(() => {
-        if (isFirstMount.current) {
-            isFirstMount.current = false;
-            return;
-        }
-
-        // Secret code toggled
-        toggleDevMode();
-    }, [secretTriggered]);
 
     useEffect(() => {
         if (isDevMode) {
@@ -55,13 +33,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             document.documentElement.removeAttribute('data-theme');
         }
     }, [isDevMode]);
-
-    // Apply theme immediately on mount (before first render completes)
-    useEffect(() => {
-        if (isDevMode) {
-            document.documentElement.setAttribute('data-theme', 'developer');
-        }
-    }, []);
 
     return (
         <ThemeContext.Provider value={{ isDevMode, toggleDevMode }}>
@@ -81,12 +52,4 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             )}
         </ThemeContext.Provider>
     );
-};
-
-export const useTheme = () => {
-    const context = useContext(ThemeContext);
-    if (!context) {
-        throw new Error('useTheme must be used within a ThemeProvider');
-    }
-    return context;
 };
